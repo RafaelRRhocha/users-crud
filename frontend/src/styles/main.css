@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FF4A70;
+  border-radius: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(4,1,10);
+  background: linear-gradient(90deg, rgba(4,1,10,1) 0%, rgba(15,4,36,1) 100%);
+  color: white;
+  height: 100vh;
+  font-family: DM Sans, sans-serif;
+}
