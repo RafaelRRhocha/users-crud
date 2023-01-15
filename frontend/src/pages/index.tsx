@@ -78,61 +78,81 @@ export default function Home() {
   };
 
   return (
-    <>
-      <div className="flex flex-col justify-center gap-4">
-        <button
-          type="button"
-          onClick={() => setFormMode(formMode === 'create' ? '' : 'create')}
-        >
-          Criar Cliente
-        </button>
-        <div>
-          {formMode === 'create' && (
-            <Form
-              createUser={ createUser }
-              users={ users }
-              mode={ formMode }
-            />
-          )}
-          {formMode === 'edit' && (
-            <Form
-              user={user}
-              editUser={ editUser }
-              mode={ formMode }
-            />
-          )}
-        </div>
+    <div className="max-w-[60%] m-auto flex flex-col gap-2 h-[100vh]">
+      <div className="flex justify-end mt-[10%]">
+        {formMode === '' && (
+          <button
+            type="button"
+            onClick={() => {
+              setFormMode('create')
+            }}
+            className="btn-sm btn-success w-[200px] rounded-lg"
+          >
+            Novo Cliente
+          </button>
+        )}
       </div>
-      {users.length === 0 || users === null ? (
-        <div>
-          <p>Nenhum Cliente Cadastrado</p>
-        </div>
+      <div>
+        {formMode === 'create' && (
+          <Form
+            createUser={ createUser }
+            users={ users }
+            mode={ formMode }
+            setFormMode={ setFormMode }
+          />
+        )}
+        {formMode === 'edit' && (
+          <Form
+            user={user}
+            editUser={ editUser }
+            mode={ formMode }
+            setFormMode={ setFormMode }
+          />
+        )}
+      </div>
+      {users.length === 0 || users === null || formMode === 'create' || formMode === 'edit'  ? (
+        <p className="text-center p-4">Nenhum Cliente Cadastrado</p>
       ) : (
-        <div>
-          {users.map(({ id, name, email}) => (
-              <div key={ id } className="flex gap-4 justify-center items-center">
-                <p>{ name }</p>
-                <p>{ email }</p>
-                <button
-                  type="button"
-                  onClick={() => removeUser(id)}
-                >
-                  <Trash size={ 25 } />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setFormMode(formMode === 'edit' ? '' : 'edit')
-                    getUserById(id)
-                  }}
-                >
-                  <ArrowSquareIn size={ 25 } />
-                </button>
-              </div>
-            ))
-          }
+        <div className="overflow-x-auto max-h-[450px]">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Editar/Excluir</th>
+              </tr>
+            </thead>
+            <tbody>
+            {users.map(({ id, name, email}) => (
+                <tr key={ id }>
+                  <th>{ id }</th>
+                  <th>{ name }</th>
+                  <th>{ email }</th>
+                  <td className="flex gap-4 items-center">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setFormMode(formMode === 'edit' ? '' : 'edit')
+                        getUserById(id)
+                      }}
+                    >
+                      <ArrowSquareIn size={ 25 } color="#37B789" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => removeUser(id)}
+                    >
+                      <Trash size={ 25 } color="#ED0606" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            }
+            </tbody>
+          </table>
         </div>
       )}
-    </>
+    </div>
   )
 }

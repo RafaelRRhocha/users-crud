@@ -5,7 +5,7 @@ import '../styles/main.css'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <title>USERS CRUD</title>
+      <title>Cadastro de Clientes</title>
       <Component {...pageProps} />
     </>
   )
