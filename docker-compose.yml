@@ -12,12 +12,8 @@ services:
     build:
       context: backend
     ports:
-      - "3001:3001"
-    command: python app.py
-  db:
-    image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-    ports:
       - "3306:3306"
-    # command: COPY ./db/ /docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=UsersDB

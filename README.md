@@ -29,6 +29,12 @@ cd users-crud
 docker-compose up --build -d
 ```
 
+### Database takes about 1 minute to start, so wait 1 minute and type in terminal
+
+```bash
+python3 app.py
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Structure

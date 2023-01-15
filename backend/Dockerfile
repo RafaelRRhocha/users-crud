@@ -1,8 +1,7 @@
-# FROM python:latest
 FROM mysql:latest
 
-WORKDIR /src/app
+WORKDIR /src/
 
 COPY ./db/ /docker-entrypoint-initdb.d/
 
-# CMD ["python", "app.py"]
+EXPOSE 3306:3306
