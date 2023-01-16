@@ -9,11 +9,11 @@ services:
       - NODE_ENV=development
     command: npm run dev
   backend:
-    build:
-      context: backend
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=UsersDB
+      build:
+        context: backend
+      ports:
+        - "3306:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=password
+        - MYSQL_PASSWORD=password
+        - MYSQL_DATABASE=UsersDB
